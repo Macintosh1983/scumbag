@@ -1,0 +1,157 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ASSHOLE = Instance.new("ScreenGui")
+local mainframe = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Printer = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local hall = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local room = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local close = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local stam = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+
+--Properties:
+
+ASSHOLE.Name = "ASSHOLE"
+ASSHOLE.Parent = game.CoreGui
+ASSHOLE.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+mainframe.Name = "mainframe"
+mainframe.Parent = ASSHOLE
+mainframe.BackgroundColor3 = Color3.fromRGB(71, 71, 71)
+mainframe.Position = UDim2.new(0.148278907, 0, 0.389030606, 0)
+mainframe.Size = UDim2.new(0, 150, 0, 273)
+
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = mainframe
+
+Printer.Name = "Printer"
+Printer.Parent = mainframe
+Printer.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+Printer.Position = UDim2.new(0.0666666627, 0, 0.164835185, 0)
+Printer.Size = UDim2.new(0, 129, 0, 50)
+Printer.Font = Enum.Font.GothamBold
+Printer.Text = "buy printer"
+Printer.TextColor3 = Color3.fromRGB(255, 255, 255)
+Printer.TextSize = 14.000
+Printer.TextStrokeTransparency = 0.000
+Printer.TextWrapped = true
+Printer.MouseButton1Down:connect(function()
+	local A_1 = "Simple Printer"
+	local A_2 = "Single"
+	local Event = game:GetService("ReplicatedStorage")["_CS.Events"].PurchaseTeamItem
+	Event:FireServer(A_1, A_2)
+end)
+
+UICorner_2.CornerRadius = UDim.new(0, 12)
+UICorner_2.Parent = Printer
+
+hall.Name = "hall"
+hall.Parent = mainframe
+hall.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+hall.Position = UDim2.new(0.0666666627, 0, 0.373626411, 0)
+hall.Size = UDim2.new(0, 129, 0, 50)
+hall.Font = Enum.Font.GothamBold
+hall.Text = "Meat Beat Hall"
+hall.TextColor3 = Color3.fromRGB(255, 255, 255)
+hall.TextSize = 14.000
+hall.TextStrokeTransparency = 0.000
+hall.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.488513, 9.82656956, -23.4563465)
+end)
+
+UICorner_3.CornerRadius = UDim.new(0, 12)
+UICorner_3.Parent = hall
+
+room.Name = "room"
+room.Parent = mainframe
+room.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+room.Position = UDim2.new(0.0666666627, 0, 0.586080611, 0)
+room.Size = UDim2.new(0, 129, 0, 50)
+room.Font = Enum.Font.GothamBold
+room.Text = "scumbag room"
+room.TextColor3 = Color3.fromRGB(255, 255, 255)
+room.TextSize = 14.000
+room.TextStrokeTransparency = 0.000
+room.MouseButton1Down:connect(function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4.79925108, 10.1440735, -24.0174274)
+end)
+
+UICorner_4.CornerRadius = UDim.new(0, 12)
+UICorner_4.Parent = room
+
+close.Name = "close"
+close.Parent = mainframe
+close.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+close.Position = UDim2.new(0.0666666701, 0, 0.0329670347, 0)
+close.Size = UDim2.new(0, 129, 0, 19)
+close.Font = Enum.Font.GothamBold
+close.Text = "close it bitch"
+close.TextColor3 = Color3.fromRGB(255, 255, 255)
+close.TextSize = 14.000
+close.MouseButton1Down:connect(function()
+	mainframe.Visible = false
+end)
+UICorner_5.Parent = close
+
+stam.Name = "stam"
+stam.Parent = mainframe
+stam.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+stam.Position = UDim2.new(0.0666666701, 0, 0.794871807, 0)
+stam.Size = UDim2.new(0, 129, 0, 41)
+stam.Font = Enum.Font.GothamBold
+stam.Text = "inf stamina"
+stam.TextColor3 = Color3.fromRGB(255, 255, 255)
+stam.TextSize = 14.000
+stam.TextStrokeTransparency = 0.000
+stam.TextWrapped = true
+stam.MouseButton1Down:connect(function()
+	if game:GetService("StarterPlayer").StarterCharacterScripts:FindFirstChild("SprintHandler") then
+		game:GetService("StarterPlayer").StarterCharacterScripts:FindFirstChild("SprintHandler"):Destroy()
+	end
+	for i,v in pairs(getgc()) do
+		if getfenv(v).script and getfenv(v).script.Name == "SprintHandler" then
+			for a,x in pairs(debug.getupvalues(v)) do
+				if type(x) == 'number' then
+					coroutine.wrap(function()
+						while wait() do
+							debug.setupvalue(v, a, 100)
+						end
+					end)()
+				end
+			end
+		end
+	end
+	print('Done Unlimited Stamina!')
+end)
+
+UICorner_6.CornerRadius = UDim.new(0, 12)
+UICorner_6.Parent = stam
+
+-- Scripts:
+
+local function QACNOUP_fake_script() -- mainframe.Drag 
+	local script = Instance.new('LocalScript', mainframe)
+
+	script.parent.Selectable = true
+	script.Parent.Active = true
+	script.parent.Draggable = true
+end
+coroutine.wrap(QACNOUP_fake_script)()
+local function HRUM_fake_script() -- mainframe.OpenGui 
+	local script = Instance.new('LocalScript', mainframe)
+
+	game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
+		if input.KeyCode == Enum.KeyCode.Q then
+			script.Parent.Visible = true--name of my gui frame
+		end
+	end)
+end
+coroutine.wrap(HRUM_fake_script)()
